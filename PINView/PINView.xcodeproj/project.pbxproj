@@ -1,0 +1,583 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		FD383F301BA14E6E0025B835 /* GCPINViewController.h in CopyFiles */ = {isa = PBXBuildFile; fileRef = FDC9C10B173740720057815F /* GCPINViewController.h */; };
+		FDC9C0E41737402A0057815F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDC9C0E31737402A0057815F /* Foundation.framework */; };
+		FDC9C0F61737402B0057815F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDC9C0E31737402A0057815F /* Foundation.framework */; };
+		FDC9C0F91737402B0057815F /* libPINView.a in Frameworks */ = {isa = PBXBuildFile; fileRef = FDC9C0E01737402A0057815F /* libPINView.a */; };
+		FDC9C0FF1737402B0057815F /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = FDC9C0FD1737402B0057815F /* InfoPlist.strings */; };
+		FDC9C1021737402B0057815F /* PINViewTests.m in Sources */ = {isa = PBXBuildFile; fileRef = FDC9C1011737402B0057815F /* PINViewTests.m */; };
+		FDC9C10D173740720057815F /* GCPINViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = FDC9C10C173740720057815F /* GCPINViewController.m */; };
+		FDC9C115173740AF0057815F /* GCPINViewController~ipad.xib in CopyFiles */ = {isa = PBXBuildFile; fileRef = FDC9C10F1737407F0057815F /* GCPINViewController~ipad.xib */; };
+		FDC9C116173740AF0057815F /* GCPINViewController~iphone.xib in CopyFiles */ = {isa = PBXBuildFile; fileRef = FDC9C1101737407F0057815F /* GCPINViewController~iphone.xib */; };
+		FDC9C118173740BC0057815F /* PINBox.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = FDC9C1111737407F0057815F /* PINBox.png */; };
+		FDC9C119173740BC0057815F /* PINBox@2x.png in CopyFiles */ = {isa = PBXBuildFile; fileRef = FDC9C1121737407F0057815F /* PINBox@2x.png */; };
+		FDC9C127173741C40057815F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = FDC9C126173741C40057815F /* UIKit.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		FDC9C0F71737402B0057815F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FDC9C0D81737402A0057815F /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = FDC9C0DF1737402A0057815F;
+			remoteInfo = PINView;
+		};
+		FDC9C178173772E40057815F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FDC9C173173772E40057815F /* riOSUI.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = FDBC6F0316F92D0400E13A75;
+			remoteInfo = riOSUI;
+		};
+		FDC9C17A173772E40057815F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FDC9C173173772E40057815F /* riOSUI.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = FDBC6F1416F92D0500E13A75;
+			remoteInfo = riOSUITests;
+		};
+		FDC9C17C173772EB0057815F /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = FDC9C173173772E40057815F /* riOSUI.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = FDBC6F0216F92D0400E13A75;
+			remoteInfo = riOSUI;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		FDC9C0DE1737402A0057815F /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/${PRODUCT_NAME}";
+			dstSubfolderSpec = 16;
+			files = (
+				FD383F301BA14E6E0025B835 /* GCPINViewController.h in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FDC9C114173740A70057815F /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = nibs;
+			dstSubfolderSpec = 7;
+			files = (
+				FDC9C115173740AF0057815F /* GCPINViewController~ipad.xib in CopyFiles */,
+				FDC9C116173740AF0057815F /* GCPINViewController~iphone.xib in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FDC9C117173740B40057815F /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = images;
+			dstSubfolderSpec = 7;
+			files = (
+				FDC9C118173740BC0057815F /* PINBox.png in CopyFiles */,
+				FDC9C119173740BC0057815F /* PINBox@2x.png in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		FDC9C0E01737402A0057815F /* libPINView.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPINView.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		FDC9C0E31737402A0057815F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		FDC9C0E71737402A0057815F /* PINView-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PINView-Prefix.pch"; sourceTree = "<group>"; };
+		FDC9C0F11737402B0057815F /* PINViewTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PINViewTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		FDC9C0FC1737402B0057815F /* PINViewTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "PINViewTests-Info.plist"; sourceTree = "<group>"; };
+		FDC9C0FE1737402B0057815F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		FDC9C1001737402B0057815F /* PINViewTests.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PINViewTests.h; sourceTree = "<group>"; };
+		FDC9C1011737402B0057815F /* PINViewTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = PINViewTests.m; sourceTree = "<group>"; };
+		FDC9C10B173740720057815F /* GCPINViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GCPINViewController.h; sourceTree = "<group>"; };
+		FDC9C10C173740720057815F /* GCPINViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GCPINViewController.m; sourceTree = "<group>"; };
+		FDC9C10F1737407F0057815F /* GCPINViewController~ipad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "GCPINViewController~ipad.xib"; sourceTree = "<group>"; };
+		FDC9C1101737407F0057815F /* GCPINViewController~iphone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = "GCPINViewController~iphone.xib"; sourceTree = "<group>"; };
+		FDC9C1111737407F0057815F /* PINBox.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = PINBox.png; sourceTree = "<group>"; };
+		FDC9C1121737407F0057815F /* PINBox@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PINBox@2x.png"; sourceTree = "<group>"; };
+		FDC9C124173741B90057815F /* libriOSUI.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libriOSUI.a; path = "../../../../Library/Developer/Xcode/DerivedData/Appraisals-dgetmuvxfjdauzhcyyhwtddebcna/Build/Products/Debug-iphoneos/libriOSUI.a"; sourceTree = "<group>"; };
+		FDC9C126173741C40057815F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		FDC9C173173772E40057815F /* riOSUI.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = riOSUI.xcodeproj; path = ../../riOSUI/riOSUI.xcodeproj; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		FDC9C0DD1737402A0057815F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FDC9C0E41737402A0057815F /* Foundation.framework in Frameworks */,
+				FDC9C127173741C40057815F /* UIKit.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FDC9C0ED1737402B0057815F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FDC9C0F61737402B0057815F /* Foundation.framework in Frameworks */,
+				FDC9C0F91737402B0057815F /* libPINView.a in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		FDC9C0D71737402A0057815F = {
+			isa = PBXGroup;
+			children = (
+				FDC9C173173772E40057815F /* riOSUI.xcodeproj */,
+				FDC9C0E51737402A0057815F /* PINView */,
+				FDC9C0FA1737402B0057815F /* PINViewTests */,
+				FDC9C0E21737402A0057815F /* Frameworks */,
+				FDC9C0E11737402A0057815F /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		FDC9C0E11737402A0057815F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FDC9C0E01737402A0057815F /* libPINView.a */,
+				FDC9C0F11737402B0057815F /* PINViewTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		FDC9C0E21737402A0057815F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				FDC9C124173741B90057815F /* libriOSUI.a */,
+				FDC9C0E31737402A0057815F /* Foundation.framework */,
+				FDC9C126173741C40057815F /* UIKit.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		FDC9C0E51737402A0057815F /* PINView */ = {
+			isa = PBXGroup;
+			children = (
+				FDC9C10B173740720057815F /* GCPINViewController.h */,
+				FDC9C10C173740720057815F /* GCPINViewController.m */,
+				FDC9C0E61737402A0057815F /* Supporting Files */,
+			);
+			path = PINView;
+			sourceTree = "<group>";
+		};
+		FDC9C0E61737402A0057815F /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				FDC9C10E1737407F0057815F /* Resources */,
+				FDC9C0E71737402A0057815F /* PINView-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		FDC9C0FA1737402B0057815F /* PINViewTests */ = {
+			isa = PBXGroup;
+			children = (
+				FDC9C1001737402B0057815F /* PINViewTests.h */,
+				FDC9C1011737402B0057815F /* PINViewTests.m */,
+				FDC9C0FB1737402B0057815F /* Supporting Files */,
+			);
+			path = PINViewTests;
+			sourceTree = "<group>";
+		};
+		FDC9C0FB1737402B0057815F /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				FDC9C0FC1737402B0057815F /* PINViewTests-Info.plist */,
+				FDC9C0FD1737402B0057815F /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		FDC9C10E1737407F0057815F /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				FDC9C10F1737407F0057815F /* GCPINViewController~ipad.xib */,
+				FDC9C1101737407F0057815F /* GCPINViewController~iphone.xib */,
+				FDC9C1111737407F0057815F /* PINBox.png */,
+				FDC9C1121737407F0057815F /* PINBox@2x.png */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		FDC9C174173772E40057815F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				FDC9C179173772E40057815F /* libriOSUI.a */,
+				FDC9C17B173772E40057815F /* riOSUITests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		FDC9C0DF1737402A0057815F /* PINView */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FDC9C1051737402B0057815F /* Build configuration list for PBXNativeTarget "PINView" */;
+			buildPhases = (
+				FDC9C0DC1737402A0057815F /* Sources */,
+				FDC9C0DD1737402A0057815F /* Frameworks */,
+				FDC9C0DE1737402A0057815F /* CopyFiles */,
+				FDC9C114173740A70057815F /* CopyFiles */,
+				FDC9C117173740B40057815F /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FDC9C17D173772EB0057815F /* PBXTargetDependency */,
+			);
+			name = PINView;
+			productName = PINView;
+			productReference = FDC9C0E01737402A0057815F /* libPINView.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+		FDC9C0F01737402B0057815F /* PINViewTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = FDC9C1081737402B0057815F /* Build configuration list for PBXNativeTarget "PINViewTests" */;
+			buildPhases = (
+				FDC9C0EC1737402B0057815F /* Sources */,
+				FDC9C0ED1737402B0057815F /* Frameworks */,
+				FDC9C0EE1737402B0057815F /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				FDC9C0F81737402B0057815F /* PBXTargetDependency */,
+			);
+			name = PINViewTests;
+			productName = PINViewTests;
+			productReference = FDC9C0F11737402B0057815F /* PINViewTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		FDC9C0D81737402A0057815F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastTestingUpgradeCheck = 0720;
+				LastUpgradeCheck = 0700;
+				ORGANIZATIONNAME = "Barton Tsikrikas";
+			};
+			buildConfigurationList = FDC9C0DB1737402A0057815F /* Build configuration list for PBXProject "PINView" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = FDC9C0D71737402A0057815F;
+			productRefGroup = FDC9C0E11737402A0057815F /* Products */;
+			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = FDC9C174173772E40057815F /* Products */;
+					ProjectRef = FDC9C173173772E40057815F /* riOSUI.xcodeproj */;
+				},
+			);
+			projectRoot = "";
+			targets = (
+				FDC9C0DF1737402A0057815F /* PINView */,
+				FDC9C0F01737402B0057815F /* PINViewTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		FDC9C179173772E40057815F /* libriOSUI.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libriOSUI.a;
+			remoteRef = FDC9C178173772E40057815F /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		FDC9C17B173772E40057815F /* riOSUITests.xctest */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.cfbundle;
+			path = riOSUITests.xctest;
+			remoteRef = FDC9C17A173772E40057815F /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
+
+/* Begin PBXResourcesBuildPhase section */
+		FDC9C0EE1737402B0057815F /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FDC9C0FF1737402B0057815F /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		FDC9C0DC1737402A0057815F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FDC9C10D173740720057815F /* GCPINViewController.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		FDC9C0EC1737402B0057815F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				FDC9C1021737402B0057815F /* PINViewTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		FDC9C0F81737402B0057815F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = FDC9C0DF1737402A0057815F /* PINView */;
+			targetProxy = FDC9C0F71737402B0057815F /* PBXContainerItemProxy */;
+		};
+		FDC9C17D173772EB0057815F /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = riOSUI;
+			targetProxy = FDC9C17C173772EB0057815F /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		FDC9C0FD1737402B0057815F /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				FDC9C0FE1737402B0057815F /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		FDC9C1031737402B0057815F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		FDC9C1041737402B0057815F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		FDC9C1061737402B0057815F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
+				DSTROOT = /tmp/PINView.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PINView/PINView-Prefix.pch";
+				HEADER_SEARCH_PATHS = "\"$(BUILT_PRODUCTS_DIR)/include/\"";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../../../Library/Developer/Xcode/DerivedData/Appraisals-dgetmuvxfjdauzhcyyhwtddebcna/Build/Products/Debug-iphoneos\"",
+				);
+				ONLY_ACTIVE_ARCH = NO;
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		FDC9C1071737402B0057815F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
+				DSTROOT = /tmp/PINView.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PINView/PINView-Prefix.pch";
+				HEADER_SEARCH_PATHS = "\"$(BUILT_PRODUCTS_DIR)/include/\"";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../../../Library/Developer/Xcode/DerivedData/Appraisals-dgetmuvxfjdauzhcyyhwtddebcna/Build/Products/Debug-iphoneos\"",
+				);
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+		FDC9C1091737402B0057815F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+					"$(inherited)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PINView/PINView-Prefix.pch";
+				INFOPLIST_FILE = "PINViewTests/PINViewTests-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "au.com.rev.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		FDC9C10A1737402B0057815F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+					"$(inherited)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PINView/PINView-Prefix.pch";
+				INFOPLIST_FILE = "PINViewTests/PINViewTests-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "au.com.rev.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		FDE19B7A174B4A0400E0ABA7 /* Distribution */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Distribution;
+		};
+		FDE19B7B174B4A0400E0ABA7 /* Distribution */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
+				DSTROOT = /tmp/PINView.dst;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PINView/PINView-Prefix.pch";
+				HEADER_SEARCH_PATHS = "\"$(BUILT_PRODUCTS_DIR)/include/\"";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/../../../../Library/Developer/Xcode/DerivedData/Appraisals-dgetmuvxfjdauzhcyyhwtddebcna/Build/Products/Debug-iphoneos\"",
+				);
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Distribution;
+		};
+		FDE19B7C174B4A0400E0ABA7 /* Distribution */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				FRAMEWORK_SEARCH_PATHS = (
+					"\"$(SDKROOT)/Developer/Library/Frameworks\"",
+					"\"$(DEVELOPER_LIBRARY_DIR)/Frameworks\"",
+					"$(inherited)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "PINView/PINView-Prefix.pch";
+				INFOPLIST_FILE = "PINViewTests/PINViewTests-Info.plist";
+				PRODUCT_BUNDLE_IDENTIFIER = "au.com.rev.${PRODUCT_NAME:rfc1034identifier}";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Distribution;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		FDC9C0DB1737402A0057815F /* Build configuration list for PBXProject "PINView" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FDC9C1031737402B0057815F /* Debug */,
+				FDC9C1041737402B0057815F /* Release */,
+				FDE19B7A174B4A0400E0ABA7 /* Distribution */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FDC9C1051737402B0057815F /* Build configuration list for PBXNativeTarget "PINView" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FDC9C1061737402B0057815F /* Debug */,
+				FDC9C1071737402B0057815F /* Release */,
+				FDE19B7B174B4A0400E0ABA7 /* Distribution */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		FDC9C1081737402B0057815F /* Build configuration list for PBXNativeTarget "PINViewTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				FDC9C1091737402B0057815F /* Debug */,
+				FDC9C10A1737402B0057815F /* Release */,
+				FDE19B7C174B4A0400E0ABA7 /* Distribution */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = FDC9C0D81737402A0057815F /* Project object */;
+}
