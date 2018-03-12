@@ -374,12 +374,17 @@ static int const PVPinFontSize = 20;
         [self dismiss];
         
         // Warn the user what has happened.
-        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Access Denied!"
-                                                        message:@"You have entered an incorrect PIN five times."
-                                                                 "Your image has been captured for identification."
-                                                       delegate:self
-                                              cancelButtonTitle:@"OK" otherButtonTitles:nil];
-        [alert show];
+        UIAlertController *alert = [UIAlertController alertControllerWithTitle:@"Access Denied"
+                                                                       message:@"You have entered an incorrect PIN five times."
+                                                                                "Your image has been captured for identification."
+                                                                preferredStyle:UIAlertControllerStyleAlert];
+        
+        UIAlertAction *alertAction = [UIAlertAction actionWithTitle:@"OK"
+                                                              style:UIAlertActionStyleDefault
+                                                            handler:^(UIAlertAction *action) {}];
+        
+        [alert addAction:alertAction];
+        [self presentViewController:alert animated:YES completion:nil];
     }
 }
 
