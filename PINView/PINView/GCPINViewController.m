@@ -97,11 +97,11 @@ static int const PVPinFontSize = 20;
 
 - (instancetype)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
-	self = [self initWithNibName:nibNameOrNil
-						  bundle:nibBundleOrNil
-							mode:GCPINViewControllerModeVerify];
-	
-	return self;
+    self = [self initWithNibName:nibNameOrNil
+                          bundle:nibBundleOrNil
+                            mode:GCPINViewControllerModeVerify];
+    
+    return self;
 }
 
 - (instancetype)initWithNibName:(NSString *)nib bundle:(NSBundle *)bundle mode:(GCPINViewControllerMode)mode
@@ -110,7 +110,7 @@ static int const PVPinFontSize = 20;
              mode == GCPINViewControllerModeVerify,
              @"Invalid passcode mode");
     
-	if (self = [super initWithNibName:nib bundle:bundle])
+    if (self = [super initWithNibName:nib bundle:bundle])
     {
         [[NSNotificationCenter defaultCenter] addObserver:self
                                                  selector:@selector(textDidChange:)
@@ -118,7 +118,7 @@ static int const PVPinFontSize = 20;
                                                    object:nil];
         
         self.mode = mode;
-        __dismiss = TRUE; // PV03
+        __dismiss = TRUE;
         
         self.tap = nil;
         self.selectIDTap = nil;
@@ -151,7 +151,7 @@ static int const PVPinFontSize = 20;
         stillImageOutput = nil;
     }
     
-	return self;
+    return self;
 }
 
 - (void)dealloc
@@ -159,7 +159,7 @@ static int const PVPinFontSize = 20;
     delegate = nil;
     
     // clear notifs
-	[[NSNotificationCenter defaultCenter] removeObserver:self
+    [[NSNotificationCenter defaultCenter] removeObserver:self
                                                     name:UITextFieldTextDidChangeNotification
                                                   object:nil];
     
@@ -177,7 +177,7 @@ static int const PVPinFontSize = 20;
 {
     UINavigationController *navController = [[UINavigationController alloc] initWithRootViewController:self];
     [navController setModalPresentationStyle:UIModalPresentationFormSheet];
-	[controller presentViewController:navController animated:animated completion:^(void){}];
+    [controller presentViewController:navController animated:animated completion:^(void){}];
 }
 
 - (BOOL) disablesAutomaticKeyboardDismissal
@@ -385,13 +385,13 @@ static int const PVPinFontSize = 20;
 
 - (void)doubleTapped
 {
-	if (self.delegate &&
-		[self.delegate respondsToSelector:@selector(PINViewCancelledByUser:)])
-	{
-		[self.delegate PINViewCancelledByUser:self];
-	}
-	
-	[self dismiss];
+    if (self.delegate &&
+        [self.delegate respondsToSelector:@selector(PINViewCancelledByUser:)])
+    {
+        [self.delegate PINViewCancelledByUser:self];
+    }
+    
+    [self dismiss];
 }
 
 - (void)dismiss
@@ -402,7 +402,7 @@ static int const PVPinFontSize = 20;
     
     dispatch_after(time, dispatch_get_main_queue(), ^(void)
     {
-		[self dismissViewControllerAnimated:YES completion:^(void){}];
+        [self dismissViewControllerAnimated:YES completion:^(void){}];
         [[UIApplication sharedApplication] endIgnoringInteractionEvents];
         numberWrongInputs = 0;
         
@@ -418,19 +418,19 @@ static int const PVPinFontSize = 20;
 #pragma mark - view lifecycle -
 - (void)viewDidLoad
 {
-	[super viewDidLoad];
-	
-	
-	NSString *currentSystemVersion = [[UIDevice currentDevice] systemVersion];
-	NSComparisonResult result = [currentSystemVersion compare:@"7.0" options:NSNumericSearch];
-	
-	if (result == NSOrderedDescending ||
-		result == NSOrderedSame)
-	{
-		[self setEdgesForExtendedLayout:UIRectEdgeNone];
-	}
-	
-	
+    [super viewDidLoad];
+    
+    
+    NSString *currentSystemVersion = [[UIDevice currentDevice] systemVersion];
+    NSComparisonResult result = [currentSystemVersion compare:@"7.0" options:NSNumericSearch];
+    
+    if (result == NSOrderedDescending ||
+        result == NSOrderedSame)
+    {
+        [self setEdgesForExtendedLayout:UIRectEdgeNone];
+    }
+    
+    
     // setup labels list
     self.labels = @[self.fieldOneLabel,
                    self.fieldTwoLabel,
@@ -446,7 +446,7 @@ static int const PVPinFontSize = 20;
     self.messageLabel.text = self.messageText;
     self.errorLabel.text = self.errorText;
     self.errorLabel.hidden = YES;
-	[self updatePasscodeDisplay];
+    [self updatePasscodeDisplay];
     
     // setup input field
 //    self.inputField.hidden = YES;
@@ -529,9 +529,9 @@ static int const PVPinFontSize = 20;
 
 - (void)viewDidUnload
 {
-	[super viewDidUnload];
+    [super viewDidUnload];
     self.tapMessage = nil;
-	self.fieldOneLabel = nil;
+    self.fieldOneLabel = nil;
     self.fieldTwoLabel = nil;
     self.fieldThreeLabel = nil;
     self.fieldFourLabel = nil;
