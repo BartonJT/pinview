@@ -162,6 +162,6 @@ typedef NS_ENUM(unsigned int, GCPINViewControllerMode)
 - (Boolean) PINView:(GCPINViewController *)aPINView verifyPIN:(NSString *)aPIN;
 - (Boolean) PINView:(GCPINViewController *)aPINView verifyPIN:(NSString *)aPIN forUser:(NSString *)anUser;
 - (void) PINViewCancelledByUser:(GCPINViewController *)aPINView;
-- (void) PINViewDidDismiss:(GCPINViewController *)aPINView; // PV04
+- (void) PINViewDidDismiss:(GCPINViewController *)aPINView;
 
 @end

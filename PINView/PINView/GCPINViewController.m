@@ -5,37 +5,6 @@
 //  Created by Caleb Davenport on 8/28/10.
 //  Copyright 2010 GUI Cocoa, LLC. All rights reserved.
 //
-//  __________________________________________________________________________________________________________________________
-//
-//  Modificaiton Log:
-//
-//  Number:  Date:       Programmer:		Description:
-//  =======  ==========  =================  ==================================================================================
-//  PV01     06/11/2012  Barton Tsikrikas	Adding in a user ID field to allow for verification of the PIN against the user's
-//											ID.
-//
-//  PV02     07/11/2012  Barton Tsikrikas	Fixed behaviour of theme code, needed additional calls.
-//
-//  PV03     07/11/2012  Barton Tsikrikas	In order to allow for the use of multiple of text fields the value of |_dismiss|
-//											has been changed so it is always TRUE. This way when a textfield requests to
-//											resign its first responder status it will be permitted.
-//
-//  PV04     07/11/2012  Barton Tsikrikas	Created new delegate method PINViewDidDismiss: that way the delegate can perform
-//											any specific actions after the view has been dismissed.
-//
-//  PV05     07/11/2012  Barton Tsikrikas	Improved the update calls that way the labels always match the text of their
-//											UITextFields.
-//
-//  PV06     07/11/2012  Barton Tsikrikas	Added the ability to capture an image of an individual who has entered the
-//											PIN number wrong for a set number of times, NUMBERTIES.
-//
-//  PV07     07/11/2102  Barton Tsikrikas	Now just use standard text fields. Left all of the original code so it can
-//											be easily reverted if desired.
-//
-//	PV08	 22/09/2014	 Barton Tsikrikas	Added new method double-tapped and delegate method PINViewCancelledByUser: to
-//											notify the parent view controller when a PINView has been dismissed by the user.
-//											Updated nibs for iOS 8.
-//  __________________________________________________________________________________________________________________________
 
 
 #import "GCPINViewController.h"
@@ -43,22 +12,22 @@
 
 #define kGCPINViewControllerDelay 0.3
 
-static int const PVFieldLength = 4; // PV01
-static int const PVNumberOfTries = 4; // PV06
-static int const PVPinFontSize = 20; // PV07
+static int const PVFieldLength = 4;
+static int const PVNumberOfTries = 4;
+static int const PVPinFontSize = 20;
 
 @interface GCPINViewController ()
 
 // array of passcode entry labels
 @property (copy, nonatomic) NSArray *labels;
-@property (copy, nonatomic) NSArray *IDLabels; // PV01
+@property (copy, nonatomic) NSArray *IDLabels;
 
 // readwrite override for mode
 @property (nonatomic, readwrite, assign) GCPINViewControllerMode mode;
 
 // extra storage used when creating a passcode
 @property (copy, nonatomic) NSString *text;
-@property (copy, nonatomic) NSString *IDText; // PV01
+@property (copy, nonatomic) NSString *IDText;
 
 // make the passcode entry labels match the input text
 - (void)updatePasscodeDisplay;
@@ -72,49 +41,48 @@ static int const PVPinFontSize = 20; // PV07
 // dismiss the view after a set delay
 - (void)dismiss;
 
-@property (readonly, assign) NSInteger numberWrongInputs; // PV06
+@property (readonly, assign) NSInteger numberWrongInputs;
 
 @end
 
 @implementation GCPINViewController
 
 @synthesize tapMessage;
-@synthesize fieldIDLabelOne; // PV01
-@synthesize fieldIDLabelTwo; // PV01
-@synthesize fieldIDLabelThree; // PV01
-@synthesize fieldIDLabelFour; // PV01
+@synthesize fieldIDLabelOne;
+@synthesize fieldIDLabelTwo;
+@synthesize fieldIDLabelThree;
+@synthesize fieldIDLabelFour;
 @synthesize fieldOneLabel = __fieldOneLabel;
 @synthesize fieldTwoLabel = __fieldTwoLabel;
 @synthesize fieldThreeLabel = __fieldThreeLabel;
 @synthesize fieldFourLabel = __fieldFourLabel;
-@synthesize IDLabel;    // PV01    
+@synthesize IDLabel;
 @synthesize messageLabel = __messageLabel;
 @synthesize errorLabel = __errorLabel;
 @synthesize inputField = __inputField;
-@synthesize IDField;    // PV01
-@synthesize IDView; // PV01
-@synthesize PINView;// PV01
+@synthesize IDField;
+@synthesize IDView;
+@synthesize PINView;
 @synthesize messageText = __messageText;
 @synthesize errorText = __errorText;
 @synthesize labels = __labels;
-@synthesize IDLabels; // PV01
+@synthesize IDLabels;
 @synthesize mode = __mode;
 @synthesize text = __text;
-@synthesize IDText; // PV01
+@synthesize IDText;
 
 @synthesize tap;
-@synthesize selectIDTap;  // PV01
-@synthesize selectPINTap; // PV01
+@synthesize selectIDTap;
+@synthesize selectPINTap;
 @synthesize delegate;
 @synthesize backgroundColour;
 @synthesize barColour;
 @synthesize fontColour;
 @synthesize fillColour;
-@synthesize numberWrongInputs; // PV06
-@synthesize session;           // PV06
-@synthesize stillImageOutput;  // PV06
+@synthesize numberWrongInputs;
+@synthesize session;
+@synthesize stillImageOutput;
 
-// PV07 <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< PV07 //
 @synthesize fieldImageOne;
 @synthesize fieldImageTwo;
 @synthesize fieldImageThree;
@@ -124,7 +92,6 @@ static int const PVPinFontSize = 20; // PV07
 @synthesize IDFieldImageTwo;
 @synthesize IDFieldImageThree;
 @synthesize IDFieldImageFour;
-// PV07 <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< PV07 //
 
 #pragma mark - object methods -
 
@@ -154,8 +121,8 @@ static int const PVPinFontSize = 20; // PV07
         __dismiss = TRUE; // PV03
         
         self.tap = nil;
-        self.selectIDTap = nil; // PV01
-        self.selectPINTap = nil; // PV01
+        self.selectIDTap = nil;
+        self.selectPINTap = nil;
         self.delegate = nil;
         
         backgroundColour = [[UIColor alloc] initWithRed:0.0
@@ -178,11 +145,11 @@ static int const PVPinFontSize = 20; // PV07
                                              blue:0.0
                                             alpha:0.8];
         
-        numberWrongInputs = 0;  // PV06
+        numberWrongInputs = 0;
         
-        session = nil;          // PV06
-        stillImageOutput = nil; // PV06
-	}
+        session = nil;
+        stillImageOutput = nil;
+    }
     
 	return self;
 }
@@ -200,9 +167,9 @@ static int const PVPinFontSize = 20; // PV07
     self.messageText = nil;
     self.errorText = nil;
 
-	if (session.running) // PV06
+    if (session.running)
     {
-        [session stopRunning]; // PV06
+        [session stopRunning];
     }
 }
 
@@ -237,7 +204,7 @@ static int const PVPinFontSize = 20; // PV07
     }
 }
 
-// PV01 <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< PV01 //
+
 - (void) updateIDDisplay
 {
     NSUInteger length = [IDField.text length];
@@ -258,12 +225,11 @@ static int const PVPinFontSize = 20; // PV07
         }
     }
 }
-// PV01 <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< PV01 //
+
 
 - (void)resetInput
 {
     /*
-     // PV07
     [[UIApplication sharedApplication] beginIgnoringInteractionEvents];
     
     dispatch_time_t time = dispatch_time(DISPATCH_TIME_NOW, kGCPINViewControllerDelay * NSEC_PER_SEC);
@@ -271,17 +237,16 @@ static int const PVPinFontSize = 20; // PV07
     dispatch_after(time, dispatch_get_main_queue(), ^(void)
     {
      */
-        [IDField setText:@""]; // PV01
+        [IDField setText:@""];
         self.inputField.text = @"";
-//        [self updateIDDisplay]; // PV05 // PV07
-//        [self updatePasscodeDisplay]; // PV05 // PV07
-//        [[UIApplication sharedApplication] endIgnoringInteractionEvents]; // PV07
-//    }); // PV07
+//        [self updateIDDisplay];
+//        [self updatePasscodeDisplay];
+//        [[UIApplication sharedApplication] endIgnoringInteractionEvents];
+//    });
 }
 
 - (void)wrong
 {
-// PV06 <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< PV06 //
     if (numberWrongInputs < PVNumberOfTries)
     {
         AudioServicesPlaySystemSound(kSystemSoundID_Vibrate);
@@ -289,7 +254,7 @@ static int const PVPinFontSize = 20; // PV07
         self.text = nil;
         [self resetInput];
         
-        [IDField becomeFirstResponder]; // PV05
+        [IDField becomeFirstResponder];
         numberWrongInputs++;
     }
     // Take picture of the 'hacker'.
@@ -416,10 +381,8 @@ static int const PVPinFontSize = 20; // PV07
                                               cancelButtonTitle:@"OK" otherButtonTitles:nil];
         [alert show];
     }
-// PV06 <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< PV06 //
 }
 
-// PV08 <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< PV08 //
 - (void)doubleTapped
 {
 	if (self.delegate &&
@@ -430,7 +393,6 @@ static int const PVPinFontSize = 20; // PV07
 	
 	[self dismiss];
 }
-// PV08 <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< PV08 //
 
 - (void)dismiss
 {
@@ -442,16 +404,14 @@ static int const PVPinFontSize = 20; // PV07
     {
 		[self dismissViewControllerAnimated:YES completion:^(void){}];
         [[UIApplication sharedApplication] endIgnoringInteractionEvents];
-        numberWrongInputs = 0; // PV06
+        numberWrongInputs = 0;
         
-// PV04 <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< PV04 //
         // Tell the delegate that PINView has dismissed itself.
         if (delegate &&
             [delegate respondsToSelector:@selector(PINViewDidDismiss:)])
         {
             [delegate PINViewDidDismiss:self];
         }
-// PV04 <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< PV04 //
     });
 }
 
@@ -480,20 +440,19 @@ static int const PVPinFontSize = 20; // PV07
     self.IDLabels = @[fieldIDLabelOne,
                      fieldIDLabelTwo,
                      fieldIDLabelThree,
-                     fieldIDLabelFour]; // PV01
+                     fieldIDLabelFour];
     
     // setup labels
     self.messageLabel.text = self.messageText;
     self.errorLabel.text = self.errorText;
     self.errorLabel.hidden = YES;
 	[self updatePasscodeDisplay];
-    [self updateIDDisplay]; // PV01
     
-	// setup input field
-//    self.inputField.hidden = YES; // PV07
-    self.inputField.hidden = NO; // PV07
-    self.inputField.font = [UIFont boldSystemFontOfSize:PVPinFontSize]; // PV07
-    self.inputField.textAlignment = NSTextAlignmentCenter; // PV07
+    // setup input field
+//    self.inputField.hidden = YES;
+    self.inputField.hidden = NO;
+    self.inputField.font = [UIFont boldSystemFontOfSize:PVPinFontSize];
+    self.inputField.textAlignment = NSTextAlignmentCenter;
     self.inputField.keyboardType = UIKeyboardTypeNumberPad;
     self.inputField.delegate = self;
     self.inputField.secureTextEntry = YES;
@@ -501,10 +460,10 @@ static int const PVPinFontSize = 20; // PV07
     self.inputField.autocapitalizationType = UITextAutocapitalizationTypeNone;
     
     // Setup ID field.
-//    [IDField setHidden:TRUE]; // PV07
-    [IDField setHidden:FALSE]; // PV07
-    [IDField setFont:[UIFont boldSystemFontOfSize:PVPinFontSize]]; // PV07
-    [IDField setTextAlignment:NSTextAlignmentCenter]; // PV07
+//    [IDField setHidden:TRUE];
+    [IDField setHidden:FALSE];
+    [IDField setFont:[UIFont boldSystemFontOfSize:PVPinFontSize]];
+    [IDField setTextAlignment:NSTextAlignmentCenter];
     [IDField setDelegate:self];
     [IDField setSecureTextEntry:FALSE];
     [IDField setAutocorrectionType:UITextAutocorrectionTypeNo];
@@ -513,7 +472,7 @@ static int const PVPinFontSize = 20; // PV07
     
     // Setup Gesture Recognisers.
     tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(doubleTapped)];
-    [tap setNumberOfTapsRequired:2]; // PV01
+    [tap setNumberOfTapsRequired:2];
     [tap setNumberOfTouchesRequired:1];
     [self.view addGestureRecognizer:tap];
     
@@ -522,7 +481,6 @@ static int const PVPinFontSize = 20; // PV07
         [self setTap:nil];
     }
     
-// PV07 <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< PV07 //
     // Hide unnecessary views.
     for (UILabel *label in self.labels)
     {
@@ -543,9 +501,7 @@ static int const PVPinFontSize = 20; // PV07
     [IDFieldImageTwo setHidden:TRUE];
     [IDFieldImageThree setHidden:TRUE];
     [IDFieldImageFour setHidden:TRUE];
-// PV07 <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< PV07 //
     
-// PV01 <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< PV01 //
     selectIDTap = [[UITapGestureRecognizer alloc] initWithTarget:IDField action:@selector(becomeFirstResponder)];
     [selectIDTap setNumberOfTapsRequired:1];
     [selectIDTap setNumberOfTouchesRequired:1];
@@ -567,9 +523,8 @@ static int const PVPinFontSize = 20; // PV07
     {
         [self setSelectPINTap:nil];
     }
-// PV01 <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< PV01 //
-	
-    [self setTheme]; // PV02
+    
+    [self setTheme];
 }
 
 - (void)viewDidUnload
@@ -580,21 +535,21 @@ static int const PVPinFontSize = 20; // PV07
     self.fieldTwoLabel = nil;
     self.fieldThreeLabel = nil;
     self.fieldFourLabel = nil;
-    self.IDLabel = nil; // PV01
+    self.IDLabel = nil;
     self.messageLabel = nil;
     self.errorLabel = nil;
     self.inputField = nil;
-    self.IDField = nil; // PV01
-    [self setIDView:nil]; // PV01
-    [self setPINView:nil]; // PV01
+    self.IDField = nil;
+    [self setIDView:nil];
+    [self setPINView:nil];
     self.labels = nil;
-    [self setIDLabels:nil]; // PV01
+    [self setIDLabels:nil];
     
     self.text = nil;
     
-    [self setTap:nil]; // PV01
-    [self setSelectIDTap:nil]; // PV01
-    [self setSelectPINTap:nil]; // PV01
+    [self setTap:nil];
+    [self setSelectIDTap:nil];
+    [self setSelectPINTap:nil];
 }
 
 - (void) viewWillAppear:(BOOL)animated
@@ -607,7 +562,7 @@ static int const PVPinFontSize = 20; // PV07
     [self updateIDDisplay];
     [self updatePasscodeDisplay];
     
-    [IDField becomeFirstResponder]; // PV01
+    [IDField becomeFirstResponder];
     
     [self refreshTheme];
 }
@@ -699,7 +654,6 @@ static int const PVPinFontSize = 20; // PV07
             }
         }
     }
-// PV01 <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< PV01 //
     else if ([notif object] == IDField)
     {
         [self updateIDDisplay];
@@ -714,13 +668,12 @@ static int const PVPinFontSize = 20; // PV07
             
         }
     }
-// PV01 <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< PV01 //
 }
 
 - (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
 {
     if (textField == self.inputField ||
-        textField == IDField) // #PV 01
+        textField == IDField)
     {
         if ([textField.text length] == PVFieldLength && [string length] > 0)
         {
@@ -733,10 +686,10 @@ static int const PVPinFontSize = 20; // PV07
         }
     }
     
-    return TRUE; // PV01
+    return TRUE;
 }
 
-// PV01 <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< PV01 //
+
 - (BOOL) textFieldShouldReturn:(UITextField *)textField
 {
     [textField resignFirstResponder];
@@ -748,7 +701,7 @@ static int const PVPinFontSize = 20; // PV07
     
     return TRUE;
 }
-// PV01 <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< PV01 //
+
 
 - (BOOL)textFieldShouldEndEditing:(UITextField *)textField
 {
@@ -779,7 +732,6 @@ static int const PVPinFontSize = 20; // PV07
     [self.navigationController.navigationBar setTintColor:nil];
     [self.navigationController.navigationBar setTintColor:barColour];
     
-    //[self.view updateShinyBackgroundWithColour:backgroundColour]; // PV02
     [self.view setBackgroundColor:backgroundColour];
 }
 
@@ -787,7 +739,7 @@ static int const PVPinFontSize = 20; // PV07
 {
     [tapMessage setTextColor:fontColour];
     [__messageLabel setTextColor:fontColour];
-    [IDLabel setTextColor:fontColour]; // #PV
+    [IDLabel setTextColor:fontColour];
     
     /*
     NSDictionary *fontAttributes = [NSDictionary dictionaryWithObject:fontColour
