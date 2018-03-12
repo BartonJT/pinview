@@ -29,27 +29,6 @@
 			remoteGlobalIDString = FDC9C0DF1737402A0057815F;
 			remoteInfo = PINView;
 		};
-		FDC9C178173772E40057815F /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = FDC9C173173772E40057815F /* riOSUI.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = FDBC6F0316F92D0400E13A75;
-			remoteInfo = riOSUI;
-		};
-		FDC9C17A173772E40057815F /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = FDC9C173173772E40057815F /* riOSUI.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = FDBC6F1416F92D0500E13A75;
-			remoteInfo = riOSUITests;
-		};
-		FDC9C17C173772EB0057815F /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = FDC9C173173772E40057815F /* riOSUI.xcodeproj */;
-			proxyType = 1;
-			remoteGlobalIDString = FDBC6F0216F92D0400E13A75;
-			remoteInfo = riOSUI;
-		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -104,7 +83,6 @@
 		FDC9C1121737407F0057815F /* PINBox@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "PINBox@2x.png"; sourceTree = "<group>"; };
 		FDC9C124173741B90057815F /* libriOSUI.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libriOSUI.a; path = "../../../../Library/Developer/Xcode/DerivedData/Appraisals-dgetmuvxfjdauzhcyyhwtddebcna/Build/Products/Debug-iphoneos/libriOSUI.a"; sourceTree = "<group>"; };
 		FDC9C126173741C40057815F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
-		FDC9C173173772E40057815F /* riOSUI.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = riOSUI.xcodeproj; path = ../../riOSUI/riOSUI.xcodeproj; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,7 +110,6 @@
 		FDC9C0D71737402A0057815F = {
 			isa = PBXGroup;
 			children = (
-				FDC9C173173772E40057815F /* riOSUI.xcodeproj */,
 				FDC9C0E51737402A0057815F /* PINView */,
 				FDC9C0FA1737402B0057815F /* PINViewTests */,
 				FDC9C0E21737402A0057815F /* Frameworks */,
@@ -208,15 +185,6 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		FDC9C174173772E40057815F /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				FDC9C179173772E40057815F /* libriOSUI.a */,
-				FDC9C17B173772E40057815F /* riOSUITests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -233,7 +201,6 @@
 			buildRules = (
 			);
 			dependencies = (
-				FDC9C17D173772EB0057815F /* PBXTargetDependency */,
 			);
 			name = PINView;
 			productName = PINView;
@@ -278,12 +245,6 @@
 			mainGroup = FDC9C0D71737402A0057815F;
 			productRefGroup = FDC9C0E11737402A0057815F /* Products */;
 			projectDirPath = "";
-			projectReferences = (
-				{
-					ProductGroup = FDC9C174173772E40057815F /* Products */;
-					ProjectRef = FDC9C173173772E40057815F /* riOSUI.xcodeproj */;
-				},
-			);
 			projectRoot = "";
 			targets = (
 				FDC9C0DF1737402A0057815F /* PINView */,
@@ -291,23 +252,6 @@
 			);
 		};
 /* End PBXProject section */
-
-/* Begin PBXReferenceProxy section */
-		FDC9C179173772E40057815F /* libriOSUI.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = libriOSUI.a;
-			remoteRef = FDC9C178173772E40057815F /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		FDC9C17B173772E40057815F /* riOSUITests.xctest */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.cfbundle;
-			path = riOSUITests.xctest;
-			remoteRef = FDC9C17A173772E40057815F /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		FDC9C0EE1737402B0057815F /* Resources */ = {
@@ -344,11 +288,6 @@
 			isa = PBXTargetDependency;
 			target = FDC9C0DF1737402A0057815F /* PINView */;
 			targetProxy = FDC9C0F71737402B0057815F /* PBXContainerItemProxy */;
-		};
-		FDC9C17D173772EB0057815F /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			name = riOSUI;
-			targetProxy = FDC9C17C173772EB0057815F /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -425,11 +364,6 @@
 				DSTROOT = /tmp/PINView.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PINView/PINView-Prefix.pch";
-				HEADER_SEARCH_PATHS = "\"$(BUILT_PRODUCTS_DIR)/include/\"";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/../../../../Library/Developer/Xcode/DerivedData/Appraisals-dgetmuvxfjdauzhcyyhwtddebcna/Build/Products/Debug-iphoneos\"",
-				);
 				ONLY_ACTIVE_ARCH = NO;
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -444,11 +378,6 @@
 				DSTROOT = /tmp/PINView.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PINView/PINView-Prefix.pch";
-				HEADER_SEARCH_PATHS = "\"$(BUILT_PRODUCTS_DIR)/include/\"";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/../../../../Library/Developer/Xcode/DerivedData/Appraisals-dgetmuvxfjdauzhcyyhwtddebcna/Build/Products/Debug-iphoneos\"",
-				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
@@ -517,11 +446,6 @@
 				DSTROOT = /tmp/PINView.dst;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "PINView/PINView-Prefix.pch";
-				HEADER_SEARCH_PATHS = "\"$(BUILT_PRODUCTS_DIR)/include/\"";
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/../../../../Library/Developer/Xcode/DerivedData/Appraisals-dgetmuvxfjdauzhcyyhwtddebcna/Build/Products/Debug-iphoneos\"",
-				);
 				OTHER_LDFLAGS = "-ObjC";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;

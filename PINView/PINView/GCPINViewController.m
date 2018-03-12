@@ -75,10 +75,10 @@ static int const PVPinFontSize = 20;
 @synthesize selectIDTap;
 @synthesize selectPINTap;
 @synthesize delegate;
-@synthesize backgroundColour;
-@synthesize barColour;
-@synthesize fontColour;
-@synthesize fillColour;
+@synthesize backgroundColour = _backgroundColour;
+@synthesize barColour = _barColour;
+@synthesize fontColour = _fontColour;
+@synthesize fillColour = _fillColour;
 @synthesize numberWrongInputs;
 @synthesize session;
 @synthesize stillImageOutput;
@@ -125,25 +125,25 @@ static int const PVPinFontSize = 20;
         self.selectPINTap = nil;
         self.delegate = nil;
         
-        backgroundColour = [[UIColor alloc] initWithRed:0.0
-                                                  green:0.0
-                                                   blue:0.0
-                                                  alpha:0.8];
+        _backgroundColour = [[UIColor alloc] initWithRed:0.0
+                                                   green:0.0
+                                                    blue:0.0
+                                                   alpha:0.8];
         
-        barColour = [[UIColor alloc] initWithRed:0.0
-                                           green:0.0
-                                            blue:0.0
-                                           alpha:0.8];
-        
-        fontColour = [[UIColor alloc] initWithRed:1.0
-                                            green:1.0
-                                             blue:1.0
-                                            alpha:1.0];
-        
-        fillColour = [[UIColor alloc] initWithRed:0.0
+        _barColour = [[UIColor alloc] initWithRed:0.0
                                             green:0.0
                                              blue:0.0
                                             alpha:0.8];
+        
+        _fontColour = [[UIColor alloc] initWithRed:1.0
+                                             green:1.0
+                                              blue:1.0
+                                             alpha:1.0];
+        
+        _fillColour = [[UIColor alloc] initWithRed:0.0
+                                             green:0.0
+                                              blue:0.0
+                                             alpha:0.8];
         
         numberWrongInputs = 0;
         
@@ -452,6 +452,7 @@ static int const PVPinFontSize = 20;
     self.errorLabel.text = self.errorText;
     self.errorLabel.hidden = YES;
     [self updatePasscodeDisplay];
+    [self updateIDDisplay];
     
     // setup input field
 //    self.inputField.hidden = YES;
@@ -569,7 +570,7 @@ static int const PVPinFontSize = 20;
     
     [IDField becomeFirstResponder];
     
-    [self refreshTheme];
+    [self setTheme];
 }
 
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)orientation
@@ -716,18 +717,6 @@ static int const PVPinFontSize = 20;
 #pragma mark - Theme Protocol -
 - (void) setTheme
 {
-    [self.navigationController.navigationBar setTintColor:nil];
-    [self.navigationController.navigationBar setTintColor:barColour];
-
-    // Apply Background Colour.
-    //[self.view applyShinyBackgroundWithColour:backgroundColour];
-    [self.view setBackgroundColor:backgroundColour];
-    
-    [self updateFonts];
-}
-
-- (void) refreshTheme
-{
     [self updateBackground];
     [self updateFonts];
 }
@@ -735,56 +724,16 @@ static int const PVPinFontSize = 20;
 - (void) updateBackground
 {
     [self.navigationController.navigationBar setTintColor:nil];
-    [self.navigationController.navigationBar setTintColor:barColour];
+    [self.navigationController.navigationBar setTintColor:self.barColour];
     
-    [self.view setBackgroundColor:backgroundColour];
+    [self.view setBackgroundColor:self.backgroundColour];
 }
 
 - (void) updateFonts
 {
-    [tapMessage setTextColor:fontColour];
-    [__messageLabel setTextColor:fontColour];
-    [IDLabel setTextColor:fontColour];
-    
-    /*
-    NSDictionary *fontAttributes = [NSDictionary dictionaryWithObject:fontColour
-                                                               forKey:UITextAttributeTextColor];
-    [self.navigationController.navigationBar setTitleTextAttributes:fontAttributes];
-     */
-}
-
-- (void) updateThemeColours:(UIColor *)aBackgroundColour fontColour:(UIColor *)aFontColour
-{
-    [self setBackgroundColour:nil];
-    [self setBackgroundColour:aBackgroundColour];
-    
-    [self setFontColour:nil];
-    [self setFontColour:aFontColour];
-    
-    [self setFillColour:nil];
-    [self setFillColour:aBackgroundColour];
-    
-    [self setBarColour:nil];
-    [self setBarColour:aBackgroundColour];
-}
-
-
-- (void) setBackgroundColour:(UIColor *)aBackgroundColour
-                  fillColour:(UIColor *)aFillColour
-                  fontColour:(UIColor *)aFontColour
-                   barColour:(UIColor *)aBarColour
-{
-    [self setBackgroundColour:nil];
-    [self setBackgroundColour:aBackgroundColour];
-    
-    [self setBarColour:nil];
-    [self setBarColour:aBarColour];
-    
-    [self setFontColour:nil];
-    [self setFontColour:aFontColour];
-    
-    [self setFillColour:nil];
-    [self setFillColour:aFillColour];
+    [tapMessage setTextColor:self.fontColour];
+    [__messageLabel setTextColor:self.fontColour];
+    [IDLabel setTextColor:self.fontColour];
 }
 
 

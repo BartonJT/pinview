@@ -12,10 +12,6 @@
 #import <AVFoundation/AVFoundation.h>
 #import <ImageIO/ImageIO.h>
 
-#import <riOSUI/ThemeProtocol.h>
-#import <riOSUI/UIView+ImprovedUI.h>
-#import <riOSUI/UINavigationController+KeyboardDismiss.h>
-
 
 typedef NS_ENUM(unsigned int, GCPINViewControllerMode)
 {
@@ -44,7 +40,7 @@ typedef NS_ENUM(unsigned int, GCPINViewControllerMode)
  Settings > General > Passcode Lock.
  
  */
-@interface GCPINViewController : UIViewController <UITextFieldDelegate, ThemeProtocol>
+@interface GCPINViewController : UIViewController <UITextFieldDelegate>
 {
     @private
         BOOL __dismiss;
